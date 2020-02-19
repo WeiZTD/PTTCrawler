@@ -110,6 +110,6 @@ func getArticles(db *gorm.DB) {
 	c.Visit("https://www.ptt.cc/bbs/Neihu/index.html")
 	c.Visit("https://www.ptt.cc/bbs/Gossiping/index.html")
 	c.Wait()
-	log.Println("articles update completed. gopher will now sleep for five minutes.")
+	log.Println("articles update completed. gopher will sleep for five minutes.")
 
 }
