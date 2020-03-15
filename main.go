@@ -12,12 +12,12 @@ import (
 )
 
 type articles struct {
-	Url        string `gorm:"unique;not null"`
-	Board      string `gorm:"PRIMARY_KEY"`
-	Title      string
-	Author     string
-	Contains   string
-	Reply      string
+	Url        string `gorm:"type:varchar(100);UNIQUE;PRIMARY_KEY;NOT NULL"`
+	Board      string `gorm:"type:varchar(50);INDEX;NOT NULL"`
+	Title      string `gorm:"type:varchar(50)"`
+	Author     string `gorm:"type:varchar(50);INDEX"`
+	Contains   string `gorm:"type:longtext"`
+	Reply      string `gorm:"type:longtext"`
 	Date       time.Time
 	Updated_at time.Time
 }

@@ -9,7 +9,7 @@ import (
 )
 
 func dbInit() (*gorm.DB, error) {
-	db, err := gorm.Open("mysql", "foo:bar@(localhost)/ptt?loc=Local&charset=utf8mb4&parseTime=True")
+	db, err := gorm.Open("mysql", "root:password@(localhost)/ptt?loc=Local&charset=utf8mb4&parseTime=True")
 	if err != nil {
 		return nil, err
 	}
@@ -22,9 +22,8 @@ func dbCheckExistArticle(url string, db *gorm.DB) (bool, error) {
 	if result := db.Where("url = ?", url).First(&articles{}); result.Error != nil {
 		if gorm.IsRecordNotFoundError(result.Error) {
 			return false, nil
-		} else {
-			return false, result.Error
 		}
+		return false, result.Error
 	}
 	return true, nil
 }
